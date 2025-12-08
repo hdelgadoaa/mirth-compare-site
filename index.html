@@ -2,45 +2,93 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Mirth Compare PRO – Comparador profesional de entornos Mirth Connect</title>
+  <title>Mirth Compare PRO – Comparador de entornos Mirth Connect (DEV, QA, PROD)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Mirth Compare PRO es una herramienta profesional para comparar entornos Mirth Connect (DEV, QA, PROD), generar reportes en Excel y dashboards visuales en segundos." />
-  <meta name="keywords" content="Mirth Compare, Mirth Connect, comparador Mirth, HL7, interoperabilidad, salud digital, DEV QA PROD" />
+  <meta name="description" content="Mirth Compare PRO es un comparador profesional de entornos Mirth Connect (DEV, QA, PROD) que detecta diferencias en canales y genera reportes ejecutivos en Excel y dashboards visuales en segundos." />
+  <meta name="keywords" content="Mirth Compare, Mirth Compare PRO, Mirth Connect, comparador Mirth Connect, HL7, interoperabilidad, salud digital, DEV QA PROD" />
   <meta name="author" content="Hugo Delgado" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://hdelgadoaa.github.io/mirth-compare-site/" />
+  <link rel="alternate" hreflang="es-cl" href="https://hdelgadoaa.github.io/mirth-compare-site/" />
 
   <!-- Open Graph para compartir en redes -->
   <meta property="og:title" content="Mirth Compare PRO – Comparador profesional de entornos Mirth Connect" />
-  <meta property="og:description" content="Control total de tus entornos Mirth (DEV, QA, PROD) con reportes en Excel y dashboard visual." />
+  <meta property="og:description" content="Control total de tus entornos Mirth (DEV, QA, PROD) con reportes en Excel y dashboard visual para equipos de interoperabilidad en salud." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://hdelgadoaa.github.io/mirth-compare-site/" />
+  <meta property="og:site_name" content="Mirth Compare PRO" />
+  <meta property="og:locale" content="es_CL" />
+  <!-- Ajusta la ruta de la imagen cuando subas tu logo/captura -->
+  <meta property="og:image" content="https://hdelgadoaa.github.io/mirth-compare-site/mirth-compare-og.png" />
 
-  <!-- Aquí luego debes pegar el meta de verificación de Google Search Console -->
+  <!-- Tarjetas de Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mirth Compare PRO – Comparador de entornos Mirth Connect" />
+  <meta name="twitter:description" content="Compara DEV, QA y PROD, detecta diferencias en canales Mirth Connect y genera reportes ejecutivos en Excel y dashboards visuales." />
+  <meta name="twitter:image" content="https://hdelgadoaa.github.io/mirth-compare-site/mirth-compare-og.png" />
+
+  <!-- Aquí luego puedes pegar el meta de verificación de Google Search Console -->
   <!-- <meta name="google-site-verification" content="TU_CODIGO_AQUI" /> -->
 
   <!-- Datos estructurados para Google (JSON-LD) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mirth Compare PRO",
-    "alternateName": "Mirth Compare",
-    "operatingSystem": "Windows",
-    "applicationCategory": "DeveloperApplication",
-    "inLanguage": "es-CL",
-    "description": "Herramienta profesional para comparar entornos Mirth Connect (DEV, QA, PROD), detectar diferencias en canales y generar reportes ejecutivos en Excel y dashboards visuales.",
-    "softwareVersion": "1.0.0",
-    "url": "https://hdelgadoaa.github.io/mirth-compare-site/",
-    "downloadUrl": "https://github.com/user-attachments/files/24029010/mirth-compare-site-1.0.0.zip",
-    "author": {
-      "@type": "Person",
-      "name": "Hugo Delgado"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Mirth Compare PRO"
-    }
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://hdelgadoaa.github.io/mirth-compare-site/#organization",
+        "name": "Mirth Compare PRO",
+        "url": "https://hdelgadoaa.github.io/mirth-compare-site/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://hdelgadoaa.github.io/mirth-compare-site/mirth-compare-og.png"
+        },
+        "founder": {
+          "@type": "Person",
+          "name": "Hugo Delgado"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://hdelgadoaa.github.io/mirth-compare-site/#website",
+        "name": "Mirth Compare PRO",
+        "url": "https://hdelgadoaa.github.io/mirth-compare-site/",
+        "inLanguage": "es-CL",
+        "publisher": {
+          "@id": "https://hdelgadoaa.github.io/mirth-compare-site/#organization"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://hdelgadoaa.github.io/mirth-compare-site/#app",
+        "name": "Mirth Compare PRO",
+        "alternateName": "Mirth Compare",
+        "operatingSystem": "Windows 10, Windows 11",
+        "applicationCategory": "DeveloperApplication",
+        "applicationSubCategory": "Integration & Interoperability Tools",
+        "inLanguage": "es-CL",
+        "description": "Herramienta profesional para comparar entornos Mirth Connect (DEV, QA, PROD), detectar diferencias en canales, scripts y mappings, y generar reportes ejecutivos en Excel y dashboards visuales para equipos de interoperabilidad en salud.",
+        "softwareVersion": "1.0.0",
+        "url": "https://hdelgadoaa.github.io/mirth-compare-site/",
+        "downloadUrl": "https://github.com/user-attachments/files/24029010/mirth-compare-site-1.0.0.zip",
+        "author": {
+          "@type": "Person",
+          "name": "Hugo Delgado"
+        },
+        "publisher": {
+          "@id": "https://hdelgadoaa.github.io/mirth-compare-site/#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://hdelgadoaa.github.io/mirth-compare-site/",
+          "price": "9990",
+          "priceCurrency": "CLP",
+          "category": "license",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    ]
   }
   </script>
 
