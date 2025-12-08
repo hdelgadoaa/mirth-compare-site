@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hdelgadoaa.github.io/mirth-compare-site/sitemap.xml
