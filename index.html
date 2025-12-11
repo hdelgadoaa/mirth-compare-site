@@ -11,6 +11,9 @@
   <link rel="canonical" href="https://hdelgadoaa.github.io/mirth-compare-site/" />
   <link rel="alternate" hreflang="es-cl" href="https://hdelgadoaa.github.io/mirth-compare-site/" />
 
+  <!-- Favicon e icono principal (sube app.png a la raíz del sitio) -->
+  <link rel="icon" type="image/png" href="app.png" />
+
   <!-- Open Graph para compartir en redes -->
   <meta property="og:title" content="Mirth Compare PRO – Comparador profesional de entornos Mirth Connect" />
   <meta property="og:description" content="Control total de tus entornos Mirth (DEV, QA, PROD) con reportes en Excel y dashboard visual para equipos de interoperabilidad en salud." />
@@ -18,14 +21,13 @@
   <meta property="og:url" content="https://hdelgadoaa.github.io/mirth-compare-site/" />
   <meta property="og:site_name" content="Mirth Compare PRO" />
   <meta property="og:locale" content="es_CL" />
-  <!-- Ajusta la ruta de la imagen cuando subas tu logo/captura -->
-  <meta property="og:image" content="https://hdelgadoaa.github.io/mirth-compare-site/mirth-compare-og.png" />
+  <meta property="og:image" content="https://hdelgadoaa.github.io/mirth-compare-site/app.png" />
 
   <!-- Tarjetas de Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Mirth Compare PRO – Comparador de entornos Mirth Connect" />
   <meta name="twitter:description" content="Compara DEV, QA y PROD, detecta diferencias en canales Mirth Connect y genera reportes ejecutivos en Excel y dashboards visuales." />
-  <meta name="twitter:image" content="https://hdelgadoaa.github.io/mirth-compare-site/mirth-compare-og.png" />
+  <meta name="twitter:image" content="https://hdelgadoaa.github.io/mirth-compare-site/app.png" />
 
   <!-- Aquí luego puedes pegar el meta de verificación de Google Search Console -->
   <!-- <meta name="google-site-verification" content="TU_CODIGO_AQUI" /> -->
@@ -42,7 +44,7 @@
         "url": "https://hdelgadoaa.github.io/mirth-compare-site/",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://hdelgadoaa.github.io/mirth-compare-site/mirth-compare-og.png"
+          "url": "https://hdelgadoaa.github.io/mirth-compare-site/app.png"
         },
         "founder": {
           "@type": "Person",
@@ -154,14 +156,9 @@
       width: 40px;
       height: 40px;
       border-radius: 8px;
-      background: var(--blue);
+      background: var(--blue) url("app.png") center/cover no-repeat;
       box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px rgba(0,120,212,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      color: #FFFFFF;
-      font-size: 14px;
+      text-indent: -9999px; /* ocultar texto si lo hubiera */
     }
 
     .logo-text-title {
@@ -275,12 +272,23 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .hero-meta {
       font-size: 12px;
       color: var(--muted);
+    }
+
+    .hero-stats {
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero-stats span.label {
+      font-weight: 600;
+      color: var(--blue);
     }
 
     /* Hero card dashboard */
@@ -598,7 +606,8 @@
         <div class="hero-actions">
           <a href="https://github.com/hdelgadoaa/mirth-compare-site/releases/download/v1.0.0/MirthComparePRO.zip"
              class="btn"
-             download>
+             download
+             onclick="registrarDescarga()">
             <span class="icon">⬇️</span>
             <span>Descargar Mirth Compare PRO</span>
           </a>
@@ -610,6 +619,13 @@
 
         <div class="hero-meta">
           Licencia por equipo · Soporte directo del desarrollador · Versión Free disponible
+        </div>
+
+        <!-- MÉTRICAS VISITAS / DESCARGAS -->
+        <div class="hero-stats">
+          <span class="label">Métricas en tiempo real:</span>
+          👁️ Visitas <span id="visitas">—</span> ·
+          ⬇️ Descargas <span id="descargas">0</span>
         </div>
       </div>
 
@@ -753,7 +769,8 @@
           <div class="price-cta">
             <a href="https://github.com/hdelgadoaa/mirth-compare-site/releases/download/v1.0.0/MirthComparePRO.zip"
                class="btn btn-ghost"
-               download>
+               download
+               onclick="registrarDescarga()">
               <span class="icon">⬇️</span>
               Descargar versión Free
             </a>
@@ -864,7 +881,7 @@
           <div class="faq-item-title">Contacto y soporte</div>
           <p class="faq-item-text">
             Para soporte, licencias o demos personalizadas, puedes escribir a:<br/>
-            <strong>tuemail@correo.com</strong><br/>
+            <strong>mirthcomparepro@gmail.com</strong><br/>
             (Reemplaza este correo por el tuyo antes de publicar la página).
           </p>
         </div>
@@ -878,9 +895,35 @@
   </div>
 
   <script>
+    // Año dinámico
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Contadores: visitas y descargas con CountAPI
+    (function () {
+      // VISITAS
+      const visitasEl = document.getElementById("visitas");
+      if (visitasEl) {
+        fetch("https://api.countapi.xyz/hit/mirth-compare-site/visitas")
+          .then(r => r.json())
+          .then(r => visitasEl.textContent = r.value)
+          .catch(() => visitasEl.textContent = "—");
+      }
+
+      // DESCARGAS (solo lectura inicial)
+      const descEl = document.getElementById("descargas");
+      if (descEl) {
+        fetch("https://api.countapi.xyz/get/mirth-compare-site/descargas")
+          .then(r => r.json())
+          .then(r => descEl.textContent = r.value || 0)
+          .catch(() => descEl.textContent = "0");
+      }
+    })();
+
+    // Cada clic en descargar incrementa el contador remoto
+    function registrarDescarga() {
+      fetch("https://api.countapi.xyz/hit/mirth-compare-site/descargas")
+        .catch(() => { /* silencioso, no afecta al usuario */ });
+    }
   </script>
 </body>
 </html>
-
-
