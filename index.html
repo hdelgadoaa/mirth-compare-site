@@ -898,33 +898,53 @@
     // Año dinámico
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Contadores: visitas y descargas con CountAPI
+    // Base de la API en Render
+    const API_BASE = "https://mirth-counter-api.onrender.com";
+
+    // Contadores: visitas y descargas usando la API propia
     (function () {
-      // VISITAS
+      // VISITAS: cada carga de página suma 1
       const visitasEl = document.getElementById("visitas");
       if (visitasEl) {
-        fetch("https://api.countapi.xyz/hit/mirth-compare-site/visitas")
+        fetch(`${API_BASE}/api/visitas/hit`)
           .then(r => r.json())
-          .then(r => visitasEl.textContent = r.value)
-          .catch(() => visitasEl.textContent = "—");
+          .then(data => {
+            visitasEl.textContent = data.value;
+          })
+          .catch(() => {
+            visitasEl.textContent = "—";
+          });
       }
 
-      // DESCARGAS (solo lectura inicial)
+      // DESCARGAS: solo lectura inicial
       const descEl = document.getElementById("descargas");
       if (descEl) {
-        fetch("https://api.countapi.xyz/get/mirth-compare-site/descargas")
+        fetch(`${API_BASE}/api/descargas/get`)
           .then(r => r.json())
-          .then(r => descEl.textContent = r.value || 0)
-          .catch(() => descEl.textContent = "0");
+          .then(data => {
+            const value = (data && typeof data.value === "number") ? data.value : 0;
+            descEl.textContent = value;
+          })
+          .catch(() => {
+            descEl.textContent = "0";
+          });
       }
     })();
 
     // Cada clic en descargar incrementa el contador remoto
     function registrarDescarga() {
-      fetch("https://api.countapi.xyz/hit/mirth-compare-site/descargas")
-        .catch(() => { /* silencioso, no afecta al usuario */ });
+      const descEl = document.getElementById("descargas");
+      fetch(`${API_BASE}/api/descargas/hit`)
+        .then(r => r.json())
+        .then(data => {
+          if (descEl && data && typeof data.value === "number") {
+            descEl.textContent = data.value;
+          }
+        })
+        .catch(() => {
+          // silencioso, no afecta al usuario
+        });
     }
   </script>
 </body>
 </html>
-
