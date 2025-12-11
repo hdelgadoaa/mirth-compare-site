@@ -2,9 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Mirth Compare PRO – Comparador de entornos Mirth Connect (DEV, QA, PROD)</title>
+  <title>Mirth Compare PRO – Comparador de entornos Mirth Connect</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Mirth Compare PRO es un comparador profesional de entornos Mirth Connect (DEV, QA, PROD) que detecta diferencias en canales y genera reportes ejecutivos en Excel y dashboards visuales en segundos." />
+  <meta name="description" content="Mirth Compare PRO es un comparador profesional de entornos Mirth Connect que detecta diferencias en canales y genera reportes ejecutivos en Excel y dashboards visuales en segundos." />
   <meta name="keywords" content="Mirth Compare, Mirth Compare PRO, Mirth Connect, comparador Mirth Connect, HL7, interoperabilidad, salud digital, DEV QA PROD" />
   <meta name="author" content="Hugo Delgado" />
   <meta name="robots" content="index, follow" />
@@ -13,7 +13,7 @@
 
   <!-- Open Graph para compartir en redes -->
   <meta property="og:title" content="Mirth Compare PRO – Comparador profesional de entornos Mirth Connect" />
-  <meta property="og:description" content="Control total de tus entornos Mirth (DEV, QA, PROD) con reportes en Excel y dashboard visual para equipos de interoperabilidad en salud." />
+  <meta property="og:description" content="Control total de tus entornos Mirth con reportes en Excel y dashboard visual para equipos de interoperabilidad en salud." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://hdelgadoaa.github.io/mirth-compare-site/" />
   <meta property="og:site_name" content="Mirth Compare PRO" />
@@ -24,7 +24,7 @@
   <!-- Tarjetas de Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Mirth Compare PRO – Comparador de entornos Mirth Connect" />
-  <meta name="twitter:description" content="Compara DEV, QA y PROD, detecta diferencias en canales Mirth Connect y genera reportes ejecutivos en Excel y dashboards visuales." />
+  <meta name="twitter:description" content="Compara entornos Mirth, detecta diferencias en canales y genera reportes ejecutivos en Excel y dashboards visuales." />
   <meta name="twitter:image" content="https://hdelgadoaa.github.io/mirth-compare-site/mirth-compare-og.png" />
 
   <!-- Aquí luego puedes pegar el meta de verificación de Google Search Console -->
@@ -68,7 +68,7 @@
         "applicationCategory": "DeveloperApplication",
         "applicationSubCategory": "Integration & Interoperability Tools",
         "inLanguage": "es-CL",
-        "description": "Herramienta profesional para comparar entornos Mirth Connect (DEV, QA, PROD), detectar diferencias en canales, scripts y mappings, y generar reportes ejecutivos en Excel y dashboards visuales para equipos de interoperabilidad en salud.",
+        "description": "Herramienta profesional para comparar entornos Mirth Connect, detectar diferencias en canales, scripts y mappings, y generar reportes ejecutivos en Excel y dashboards visuales para equipos de interoperabilidad en salud.",
         "softwareVersion": "1.0.0",
         "url": "https://hdelgadoaa.github.io/mirth-compare-site/",
         "downloadUrl": "https://github.com/user-attachments/files/24029010/mirth-compare-site-1.0.0.zip",
@@ -94,7 +94,6 @@
 
   <style>
     :root {
-      /* Colores similares a la app de escritorio y al reporte HTML */
       --bg: #F5F5F5;
       --bg-card: #FFFFFF;
       --border: #DDDDDD;
@@ -102,7 +101,7 @@
       --text: #222222;
       --muted: #666666;
 
-      --blue: #0078D4;      /* barra/reportes */
+      --blue: #0078D4;
       --blue-soft: #E6F4FF;
 
       --accent: var(--blue);
@@ -222,8 +221,6 @@
       font-size: 16px;
     }
 
-    /* HERO */
-
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
@@ -282,8 +279,6 @@
       font-size: 12px;
       color: var(--muted);
     }
-
-    /* Hero card dashboard */
 
     .hero-card {
       border-radius: var(--radius-xl);
@@ -383,8 +378,6 @@
       color: var(--muted);
     }
 
-    /* Sections */
-
     section {
       margin-bottom: 40px;
     }
@@ -448,8 +441,6 @@
       color: var(--muted);
     }
 
-    /* Pricing */
-
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -502,8 +493,6 @@
       margin-top: 6px;
     }
 
-    /* Timeline */
-
     .timeline {
       margin-top: 20px;
       border-radius: var(--radius-xl);
@@ -526,8 +515,6 @@
 
     .timeline-label { color: var(--muted); }
     .timeline-value { color: var(--text); }
-
-    /* FAQ & contact */
 
     .faq-grid {
       display: grid;
@@ -576,12 +563,12 @@
         </div>
       </div>
       <div class="tagline">
-        Optimiza tus despliegues entre DEV, QA y PROD en minutos.
+        Optimiza tus despliegues entre entornos Mirth en minutos.
       </div>
     </header>
 
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" id="inicio">
       <div>
         <div class="hero-badges">
           <div class="badge">#Integraciones · #MirthConnect · #HL7</div>
@@ -596,20 +583,20 @@
         </p>
 
         <div class="hero-actions">
-          <a href="https://github.com/hdelgadoaa/mirth-compare-site/releases/download/v1.0.0/MirthComparePRO.zip"
+          <a href="https://github.com/user-attachments/files/24029010/mirth-compare-site-1.0.0.zip"
              class="btn"
              download>
             <span class="icon">⬇️</span>
             <span>Descargar Mirth Compare PRO</span>
           </a>
-          <button class="btn btn-ghost">
+          <a href="#como-funciona" class="btn btn-ghost">
             <span class="icon">▶</span>
             <span>Ver cómo funciona</span>
-          </button>
+          </a>
         </div>
 
         <div class="hero-meta">
-          Licencia por equipo · Soporte directo del desarrollador · Versión Free disponible
+          Licencia por equipo · Soporte directo del desarrollador · Versión Free incluida
         </div>
       </div>
 
@@ -620,7 +607,7 @@
             <div class="hero-card-title">Dashboard de comparación</div>
             <div class="hero-card-sub">QA vs PROD · Última ejecución: hace 3 minutos</div>
           </div>
-          <div class="pill pro">MODO PRO</div>
+          <div class="pill">MODO PRO</div>
         </div>
 
         <div class="status-grid">
@@ -664,7 +651,7 @@
     </section>
 
     <!-- FEATURES -->
-    <section>
+    <section id="caracteristicas">
       <h2 class="section-title">Pensado específicamente para equipos que viven en Mirth Connect</h2>
       <p class="section-subtitle">
         Mirth Compare PRO automatiza el trabajo manual de exportar canales, revisar XML y
@@ -677,8 +664,8 @@
           <div class="card-icon">⚙️</div>
           <div class="card-title">Comparación precisa entre entornos</div>
           <p class="card-text">
-            Compara DEV, QA y PROD, detecta diferencias en scripts, transformers, mappings
-            y configuración general de cada canal. Evita sorpresas al desplegar.
+            Compara entornos Mirth (por ejemplo QA vs PROD), detecta diferencias en scripts,
+            transformers, mappings y configuración general de cada canal. Evita sorpresas al desplegar.
           </p>
         </div>
 
@@ -723,7 +710,7 @@
           <div class="card-icon">🔐</div>
           <div class="card-title">Licencia simple y sin sorpresas</div>
           <p class="card-text">
-            Modo Free para comparaciones básicas y modo PRO con funcionalidades avanzadas.
+            Incluye modo Free para comparaciones básicas y modo PRO con funcionalidades avanzadas.
             Licencia por equipo, sin suscripciones obligatorias.
           </p>
         </div>
@@ -731,10 +718,10 @@
     </section>
 
     <!-- PRICING -->
-    <section>
+    <section id="licencias">
       <h2 class="section-title">Free vs PRO: elige cómo empezar</h2>
       <p class="section-subtitle">
-        Puedes comenzar con la versión gratuita y, cuando tu equipo lo necesite,
+        Puedes comenzar con la versión gratuita incluida en el paquete y, cuando tu equipo lo necesite,
         activar Mirth Compare PRO para desbloquear todo el potencial del dashboard
         y la automatización.
       </p>
@@ -746,16 +733,16 @@
           <div class="price-note">Ideal para pruebas internas y pequeños entornos.</div>
           <ul class="price-list">
             <li>Comparación entre dos entornos (ej: QA vs PROD).</li>
-            <li>Exportación básica de resultados a Excel.</li>
+            <li>Exportación básica de resultados a Excel (diff.xlsx).</li>
             <li>Vista de diferencias por canal.</li>
             <li>Sin límite de ejecuciones.</li>
           </ul>
           <div class="price-cta">
-            <a href="https://github.com/hdelgadoaa/mirth-compare-site/releases/download/v1.0.0/MirthComparePRO.zip"
+            <a href="https://github.com/user-attachments/files/24029010/mirth-compare-site-1.0.0.zip"
                class="btn btn-ghost"
                download>
               <span class="icon">⬇️</span>
-              Descargar versión Free
+              Descargar paquete (incluye Free)
             </a>
           </div>
         </div>
@@ -769,22 +756,23 @@
           <ul class="price-list">
             <li>Dashboards avanzados con métricas y heatmaps.</li>
             <li>Histórico de comparaciones y trazabilidad de cambios.</li>
-            <li>Modo triple entorno (DEV + QA + PROD).</li>
+            <li>Comparación de múltiples entornos Mirth.</li>
             <li>Soporte directo y prioridad en nuevas funcionalidades.</li>
             <li>Ideal para hospitales, clínicas y grandes integradores.</li>
           </ul>
           <div class="price-cta">
-            <button class="btn">
+            <a href="mailto:mirthcomparepro@gmail.com?subject=Mirth%20Compare%20PRO%20-%20Licencia"
+               class="btn">
               <span class="icon">💳</span>
-              Comprar licencia PRO
-            </button>
+              Solicitar licencia PRO
+            </a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- HOW IT WORKS -->
-    <section>
+    <section id="como-funciona">
       <h2 class="section-title">¿Cómo se integra en tu flujo de trabajo?</h2>
       <p class="section-subtitle">
         Mirth Compare PRO se ejecuta como una aplicación de escritorio que se conecta
@@ -796,7 +784,7 @@
         <div class="timeline-row">
           <div class="timeline-label">1. Conecta</div>
           <div class="timeline-value">
-            Configura las URL y credenciales de tus entornos DEV, QA y PROD.
+            Configura las URL y credenciales de tus entornos Mirth.
             Puedes guardar tus instancias para no volver a escribirlas.
           </div>
         </div>
@@ -825,7 +813,7 @@
     </section>
 
     <!-- FAQ & CONTACT -->
-    <section>
+    <section id="faq">
       <h2 class="section-title">Preguntas frecuentes</h2>
       <p class="section-subtitle">
         Si tienes otra duda o quieres una demo personalizada, puedes escribir directamente
@@ -856,7 +844,7 @@
           <p class="faq-item-text">
             Sí. La versión Free seguirá funcionando para comparaciones básicas.
             La versión PRO agrega funcionalidades avanzadas de dashboard,
-            trazabilidad y triple entorno.
+            trazabilidad y soporte ampliado.
           </p>
         </div>
 
@@ -864,8 +852,7 @@
           <div class="faq-item-title">Contacto y soporte</div>
           <p class="faq-item-text">
             Para soporte, licencias o demos personalizadas, puedes escribir a:<br/>
-            <strong>tuemail@correo.com</strong><br/>
-            (Reemplaza este correo por el tuyo antes de publicar la página).
+            <strong>mirthcomparepro@gmail.com</strong>
           </p>
         </div>
       </div>
@@ -882,5 +869,3 @@
   </script>
 </body>
 </html>
-
-
