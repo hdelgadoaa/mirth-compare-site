@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mirth Compare PRO – Estadísticas internas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      padding: 24px;
+      background: #f5f5f5;
+      color: #222;
+    }
+    h1 { margin-top: 0; }
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 16px 20px;
+      max-width: 400px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border: 1px solid #ddd;
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .row span.label { font-weight: 600; }
+    .row span.value { font-family: "Consolas", monospace; }
+    small { color: #666; }
+  </style>
+</head>
+<body>
+  <h1>Estadísticas internas – Mirth Compare PRO</h1>
+  <p><small>Esta página no está enlazada desde ningún lado. Solo quien conoce la URL puede verla.</small></p>
+
+  <div class="card">
+    <div class="row">
+      <span class="label">Visitas registradas:</span>
+      <span class="value" id="visitas">...</span>
+    </div>
+    <div class="row">
+      <span class="label">Descargas registradas:</span>
+      <span class="value" id="descargas">...</span>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = "https://mirth-counter-api.onrender.com";
+
+    function fetchJSONWithRetry(url, onSuccess, onError, retries = 4, delayMs = 3000) {
+      fetch(url)
+        .then(response => response.text())
+        .then(text => {
+          try {
+            const data = JSON.parse(text);
+            onSuccess(data);
+          } catch (e) {
+            if (retries > 1) {
+              setTimeout(() => {
+                fetchJSONWithRetry(url, onSuccess, onError, retries - 1, delayMs);
+              }, delayMs);
+            } else if (onError) {
+              onError(e);
+            }
+          }
+        })
+        .catch(err => {
+          if (retries > 1) {
+            setTimeout(() => {
+              fetchJSONWithRetry(url, onSuccess, onError, retries - 1, delayMs);
+            }, delayMs);
+          } else if (onError) {
+            onError(err);
+          }
+        });
+    }
+
+    const visitasEl = document.getElementById("visitas");
+    const descEl = document.getElementById("descargas");
+
+    fetchJSONWithRetry(
+      `${API_BASE}/api/visitas/get`,
+      data => { visitasEl.textContent = data.value; },
+      () => { visitasEl.textContent = "error"; }
+    );
+
+    fetchJSONWithRetry(
+      `${API_BASE}/api/descargas/get`,
+      data => { descEl.textContent = data.value; },
+      () => { descEl.textContent = "error"; }
+    );
+  </script>
+</body>
+</html>
