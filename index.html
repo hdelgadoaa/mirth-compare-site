@@ -919,10 +919,12 @@
     // En tu app era algo como ".../mirth-compare" + "/create-payment"
     const PURCHASE_BASE = "https://mirth-license-server.onrender.com/mirth-compare";
 
-    // Warm-up (evita cold start antes de comprar)
-    (function warmUp() {
-      fetch(`${PURCHASE_BASE.replace(/\/+$/, "")}/ping`, { cache: "no-store" }).catch(() => {});
-    })();
+    // Warm-up (evita cold start antes de comprar) SIN CORS
+(function warmUp() {
+  const url = `${PURCHASE_BASE.replace(/\/+$/, "")}/ping?t=${Date.now()}`;
+  const img = new Image();
+  img.src = url;
+})();
 
     // Contadores: visitas y descargas usando la API propia
     (function () {
@@ -961,37 +963,19 @@
         .catch(() => {});
     }
 
-    // Compra: replica el flujo de tu app (POST /create-payment -> redirect data.url)
-    async function buySelectedPlan() {
-      const sel = document.getElementById("planSelect");
-      const plan = sel ? sel.value : "PRO_1";
-      const endpoint = `${PURCHASE_BASE.replace(/\/+$/, "")}/create-payment`;
+    // Compra SIN CORS: redirige al servidor y el servidor redirige a MercadoPago
+function buySelectedPlan() {
+  const sel = document.getElementById("planSelect");
+  const plan = sel ? sel.value : "PRO_1";
 
-      try {
-        const resp = await fetch(endpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ source: "mirth_site", plan })
-        });
+  const base = PURCHASE_BASE.replace(/\/+$/, "");
+  const url = `${base}/buy?plan=${encodeURIComponent(plan)}&source=mirth_site`;
 
-        const data = await resp.json().catch(() => ({}));
+  // mejor abrir en nueva pestaña para no perder la landing
+  window.open(url, "_blank", "noopener");
+}
 
-        if (!resp.ok) {
-          throw new Error(data?.error || `HTTP ${resp.status}`);
-        }
-
-        if (data && data.url) {
-          window.location.href = data.url;
-          return;
-        }
-
-        throw new Error("Respuesta sin URL de pago");
-      } catch (e) {
-        alert("No se pudo iniciar el pago automático. Intenta nuevamente.");
-        // fallback: abrir el server por si quieres mostrar instrucciones
-        window.open(PURCHASE_BASE, "_blank");
-      }
-    }
   </script>
 </body>
 </html>
+
